@@ -10,6 +10,7 @@
     ];
 
     foreach($usuarios as $user){
+        
         if($user['email'] == $_POST['email'] and $user['senha'] == $_POST['senha']){
             $auth = true;
         }
@@ -17,10 +18,10 @@
 
     if ($auth == true){
         echo 'Usuário autorizado!';
-        $_SESSION['autenticado'] = true;
+        $_SESSION['autenticado'] = 'SIM';
     }
     else{
-        $_SESSION['autenticado'] = false;
+        $_SESSION['autenticado'] = 'NAO';
         header('Location: index.php?login=erro');
     }
 

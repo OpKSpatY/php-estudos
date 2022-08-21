@@ -47,6 +47,13 @@
                   </div>
                 <?php
                   }
+                  if(isset($_GET['login']) && $_GET['login'] == 'erro2'){ // Detecta se a variável $_GET ou $_POST já foi iniciada (isset())
+                ?>
+                  <div class="text-danger">
+                    <p>Entre com suas credenciais primeiro antes de acessar os outros sítios</p>
+                  </div>
+                <?php 
+                  }
                 ?>
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>
