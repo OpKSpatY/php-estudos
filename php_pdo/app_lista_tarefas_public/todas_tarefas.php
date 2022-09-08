@@ -15,35 +15,38 @@
 
 		<script>
 			function edit(id, txt_tarefa){
-				let form = document.createElement('form');
-				form.action = '#';
-				form.method = 'post';
-				form.className = 'row';
 
-				let inputTask = document.createElement('input');
-				inputTask.type = 'text';
-				inputTask.name = 'tarefa';
-				inputTask.className = 'form-control col-8';
-				inputTask.value = txt_tarefa;
+				let form = document.createElement('form')
+				form.action = 'tarefa_controller.php?acao=atualizar'
+				form.method = 'post'
+				form.className = 'row'
 
-				let inputId = document.createElement('input');
-				inputId.type = 'hidden';
-				inputId.name = 'id';
-				inputId.value = id;
+				let inputTask = document.createElement('input')
+				inputTask.type = 'text'
+				inputTask.name = 'tarefa'
+				inputTask.className = 'form-control col-8'
+				inputTask.value = txt_tarefa
 
-				let button = document.createElement('button');
-				button.type = 'submit';
-				button.className = 'btn btn-info col-3';
-				button.innerHTML = 'Atualizar';
+				let inputId = document.createElement('input')
+				inputId.type = 'hidden'
+				inputId.name = 'id'
+				inputId.value = id
+
+				let button = document.createElement('button')
+				button.type = 'submit'
+				button.className = 'btn btn-info col-3'
+				button.innerHTML = 'Atualizar'
 
 				form.appendChild(inputTask);
 				form.appendChild(button);
 				form.appendChild(inputId);
 
-				let tarefa = document.getElementById('tarefa' + id);
+				let tarefa = document.getElementById('tarefa_' + id);
 
 				tarefa.innerHTML = '';
 				tarefa.insertBefore(form, tarefa[0]);
+
+
 			}
 		</script>
 	</head>
@@ -74,7 +77,6 @@
 							<div class="col">
 								<h4>Todas tarefas</h4>
 								<hr />
-
 								<?php 
 									foreach ($tarefas as $indice => $tarefa){?>
 										<div class="row mb-3 d-flex align-items-center tarefa">
@@ -82,14 +84,13 @@
 												<?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)</div>
 											<div class="col-sm-3 mt-2 d-flex justify-content-between">
 												<i class="fas fa-trash-alt fa-lg text-danger"></i>
-												<i class="fas fa-edit fa-lg text-info" onclick="edit(<?= $tarefa->id?>, '<?= $tarefa->tarefa?>')"></i>
+												<i class="fas fa-edit fa-lg text-info" onclick="edit(<?= $tarefa->id?>, '<?= $tarefa->tarefa ?>')"></i>
 												<i class="fas fa-check-square fa-lg text-success"></i>
 											</div>
 										</div>
 										<?php
 									}
 								?>
-								
 							</div>
 						</div>
 					</div>
