@@ -5,7 +5,7 @@ class Conexao{
     private $db = 'php_pdo';
     private $password = '';
 
-    public function conect(){
+    public function connect(){
         try{
             $conection = new PDO(
                 "mysql:host=$this->host;dbname=$this->db",
